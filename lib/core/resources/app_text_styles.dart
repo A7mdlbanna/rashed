@@ -5,7 +5,7 @@ import 'package:rashed/core/helper/size_extension.dart';
 import 'app_colors.dart';
 
 class AppCorners {
-  static BorderRadius border_4 = BorderRadius.circular(4.r);
+  static BorderRadius border_16 = BorderRadius.circular(16.r);
   static BorderRadius border_8 = BorderRadius.circular(8.r);
   static BorderRadius border_20 = BorderRadius.circular(20.r);
   static BorderRadius border_28 = BorderRadius.circular(28.r);

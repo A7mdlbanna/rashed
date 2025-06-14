@@ -83,7 +83,7 @@ class _AppButtonState extends State<AppButton> {
           decoration: widget.decoration ?? BoxDecoration(
             image: widget.backgroundImage == null ? null : DecorationImage(image: AssetImage(widget.backgroundImage!), fit: BoxFit.cover),
             color: widget.outlined ? Colors.transparent : (widget.color ?? AppColors.primaryDark),
-            borderRadius: widget.borderRadius ?? AppCorners.border_26,
+            borderRadius: widget.borderRadius ?? AppCorners.border_16,
             border: widget.borderColor == null ? null : Border.all(color: widget.borderColor!, width: 2.0),
           ),
           child: Align(

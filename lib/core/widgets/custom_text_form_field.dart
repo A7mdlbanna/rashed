@@ -1,3 +1,4 @@
+import 'package:rashed/core/resources/app_colors.dart';
 import 'package:rashed/core/resources/app_text_styles.dart';
 import 'package:rashed/core/widgets/custom_image_view.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class CustomTextFormField extends StatefulWidget {
     this.contentPadding,
     this.borderDecoration,
     this.fillColor,
-    this.filled = true,
+    this.filled = false,
     this.enabled = true,
     this.validator, this.formatters, this.onTap, this.onChanged, this.borderColor, this.borderRadius, this.labelText,
   });
@@ -133,7 +134,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             controller: widget.controller,
             focusNode: widget.focusNode,
             autofocus: widget.autofocus!,
-            style: widget.textStyle ?? AppTextStyles.bold_24.copyWith(color: widget.enabled ? Theme.of(context).primaryColorDark : Theme.of(context).primaryColorDark.withOpacity(.6)),
+            style: widget.textStyle ?? AppTextStyles.bold_28.copyWith(color: widget.enabled ? AppColors.white : AppColors.textLight.withOpacity(.6)),
             obscureText: obscure,
             textInputAction: widget.textInputAction,
             keyboardType: widget.textInputType,
@@ -150,15 +151,17 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 
   InputDecoration get decoration => InputDecoration(
     alignLabelWithHint: true,
+    border: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white), borderRadius: AppCorners.border_16),
+    focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white, width: 2), borderRadius: AppCorners.border_16),
     labelText: widget.labelText,
     labelStyle: AppTextStyles.medium_24,
     hintText: widget.hintText ?? "",
-    hintStyle: widget.hintStyle ?? AppTextStyles.medium_24.copyWith(color: Theme.of(context).primaryColorLight),
+    hintStyle: widget.hintStyle ?? AppTextStyles.medium_24.copyWith(color: AppColors.white.withOpacity(.5)),
     prefixIcon: widget.prefix == null ? null : CustomImageView(imagePath: widget.prefix, margin: EdgeInsets.symmetric(horizontal: 10.w)),
-    prefixIconConstraints: widget.prefixConstraints ?? BoxConstraints(maxWidth: 48.w, maxHeight: 24.h),
+    prefixIconConstraints: widget.prefixConstraints ?? const BoxConstraints(maxWidth: 44, maxHeight: 30),
     prefixIconColor: Theme.of(context).primaryColor,
     suffixIcon: suffixIcon,
-    suffixIconConstraints: widget.suffixConstraints ?? BoxConstraints(maxWidth: 48.w, maxHeight: 24.h),
+    suffixIconConstraints: widget.suffixConstraints ?? const BoxConstraints(maxWidth: 48, maxHeight: 24),
     suffixIconColor: Theme.of(context).primaryColor,
     contentPadding: widget.contentPadding ?? EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
     fillColor: widget.fillColor,
@@ -167,10 +170,12 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   );
 
   Widget? get suffixIcon {
-    return widget.obscureText ? IconButton(
-      onPressed: changeObscure,
-      icon: Icon(obscure ? Icons.visibility_off : Icons.visibility),
-      color: Theme.of(context).primaryColor,
+    return widget.obscureText ? InkWell(
+      onTap: changeObscure,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20.w),
+        child: Icon(obscure ? Icons.visibility_off : Icons.visibility, color: Colors.white),
+      ),
     ) : widget.suffix;
   }
 }

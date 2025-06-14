@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rashed/features/auth/login/ui/login_screen.dart';
 import 'package:rashed/features/on_boarding.dart';
 
 import '../../features/splash_screen.dart';
@@ -16,6 +17,9 @@ class RouteGenerator{
 
       case AppRoutes.onBoarding:
         return _screenRedirect(const OnBoarding());
+
+      case AppRoutes.login:
+        return _screenRedirect(const LoginScreen());
 
       default:
         return _errorRoute();

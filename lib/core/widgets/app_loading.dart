@@ -14,7 +14,7 @@ class AppLoading extends StatelessWidget {
       fit: BoxFit.scaleDown,
       child: SpinKitFadingCube(
         color: color ?? Theme.of(context).primaryColor,
-        size: size ?? 30.sp,
+        size: size ?? 40.sp,
       ),
     );
   }
