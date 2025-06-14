@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rashed/features/auth/login/ui/login_screen.dart';
 import 'package:rashed/features/on_boarding.dart';
 
+import '../../features/auth/register/ui/register_screen.dart';
 import '../../features/splash_screen.dart';
 import '../resources/app_routes.dart';
 
@@ -20,6 +21,9 @@ class RouteGenerator{
 
       case AppRoutes.login:
         return _screenRedirect(const LoginScreen());
+
+      case AppRoutes.register:
+        return _screenRedirect(const RegisterScreen());
 
       default:
         return _errorRoute();

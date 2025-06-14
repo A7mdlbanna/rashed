@@ -5,6 +5,7 @@ class AppImages{
 
   static String back = '$icons/back.svg';
   static String user = '$icons/user.svg';
+  static String email = '$icons/email.svg';
   static String lock = '$icons/lock.svg';
 
   static String imageNotFound = '$images/image_not_found.png';
