@@ -18,6 +18,7 @@ class Rashed extends StatelessWidget {
         return MaterialApp(
           title: 'Rashed',
           themeMode: ThemeMode.dark,
+          darkTheme: ThemeData(scaffoldBackgroundColor: Colors.black),
           debugShowCheckedModeBanner: false,
 
           initialRoute: AppRoutes.splash,

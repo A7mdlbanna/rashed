@@ -62,7 +62,7 @@ class AppText extends StatelessWidget {
     if (color != null) {
       textStyle = textStyle.copyWith(color: color, fontSize: size, fontWeight: fontWeight, decoration: decoration);
     }else{
-      textStyle = textStyle.copyWith(fontSize: size, fontWeight: fontWeight, color: Theme.of(context).primaryColorDark, decoration: decoration);
+      textStyle = textStyle.copyWith(fontSize: size, fontWeight: fontWeight, decoration: decoration);
 
     }
     if(leading != null || trailing != null) {
@@ -135,7 +135,7 @@ class AppText extends StatelessWidget {
         overflow: overflow,
         maxLines: maxLines,
         softWrap: softWrap,
-        style: maxLines > 1 ? textStyle.copyWith(height: height ?? 1.3.h) : textStyle,
+        style: maxLines > 1 ? textStyle.copyWith(height: height ?? 1.8.h) : textStyle,
       ),
     );
   }

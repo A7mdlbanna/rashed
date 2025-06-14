@@ -7,5 +7,10 @@ class AppImages{
 
   static String back = '$icons/back.svg';
 
+  static String mesh1 = '$images/mesh_1.png';
+  static String mesh2 = '$images/mesh_2.png';
+  static String mesh3 = '$images/mesh_3.png';
+  static String meshNav = '$images/nav_mesh.png';
+
 
 }

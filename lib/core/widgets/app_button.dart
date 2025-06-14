@@ -10,6 +10,7 @@ class AppButton extends StatefulWidget {
     this.height,
     this.translation,
     this.color,
+    this.backgroundImage,
     this.textColor = Colors.white,
     this.onTap,
     this.fontSize,
@@ -31,6 +32,7 @@ class AppButton extends StatefulWidget {
   final bool center;
   final bool centerText;
   final String? translation;
+  final String? backgroundImage;
   final Color textColor;
   final double? fontSize;
   final double? width;
@@ -79,6 +81,7 @@ class _AppButtonState extends State<AppButton> {
           height: widget.height,
           padding: widget.padding,
           decoration: widget.decoration ?? BoxDecoration(
+            image: widget.backgroundImage == null ? null : DecorationImage(image: AssetImage(widget.backgroundImage!), fit: BoxFit.cover),
             color: widget.outlined ? Colors.transparent : (widget.color ?? AppColors.primaryDark),
             borderRadius: widget.borderRadius ?? AppCorners.border_26,
             border: widget.borderColor == null ? null : Border.all(color: widget.borderColor!, width: 2.0),

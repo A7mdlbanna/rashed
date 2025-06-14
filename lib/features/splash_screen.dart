@@ -35,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: CustomImageView(imagePath: AppImages.logo, width: 541.w),
+        child: CustomImageView(imagePath: AppImages.logo, margin: EdgeInsets.all(30.r)),
       ),
     );
   }

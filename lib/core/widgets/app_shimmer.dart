@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../resources/app_colors.dart';
+
 class AppShimmer extends StatelessWidget {
   const AppShimmer({super.key, required this.child});
 
@@ -9,8 +11,8 @@ class AppShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: Theme.of(context).primaryColor.withOpacity(0.2),
-      highlightColor: Theme.of(context).primaryColorLight.withOpacity(0.2),
+      baseColor: AppColors.primaryDark.withOpacity(0.2),
+      highlightColor: AppColors.primary.withOpacity(0.2),
       child: child,
     );
   }
