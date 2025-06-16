@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:rashed/features/auth/login/ui/login_screen.dart';
+import 'package:rashed/features/home/ui/home_layout.dart';
 import 'package:rashed/features/on_boarding.dart';
 
 import '../../features/auth/register/ui/register_screen.dart';
-import '../../features/home/ui/home_screen.dart';
 import '../../features/splash_screen.dart';
 import '../resources/app_routes.dart';
 
@@ -27,7 +27,7 @@ class RouteGenerator{
         return _screenRedirect(const RegisterScreen());
 
       case AppRoutes.home:
-        return _screenRedirect(const HomeScreen());
+        return _screenRedirect(const HomeScreenLayout());
 
       default:
         return _errorRoute();
