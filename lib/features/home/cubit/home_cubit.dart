@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:rashed/core/resources/app_colors.dart';
 import 'package:rashed/core/widgets/app_text_display.dart';
+import 'package:rashed/features/profile/ui/profile_screen.dart';
 
 import '../ui/home_screen.dart';
 
@@ -26,7 +27,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   List<Widget> screens = [
     const HomeScreen(),
-    Center(child: AppText(translation: 'Profile', color: AppColors.textLight,)),
+    const ProfileScreen(),
     Center(child: AppText(translation: 'Settings', color: AppColors.textLight)),
   ];
 

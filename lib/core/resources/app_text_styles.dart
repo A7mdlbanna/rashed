@@ -35,6 +35,10 @@ class AppTextStyles {
   static final TextStyle bold_24 = GoogleFonts.workSans(color: AppColors.textLight, fontWeight: FontWeight.bold, fontSize: 24.sp);
   static final TextStyle bold_20 = GoogleFonts.workSans(color: AppColors.textLight, fontWeight: FontWeight.bold, fontSize: 20.sp);
 
+  static final TextStyle semi_40 = GoogleFonts.workSans(color: AppColors.textLight, fontWeight: FontWeight.w600, fontSize: 40.sp);
+  static final TextStyle semi_32 = GoogleFonts.workSans(color: AppColors.textLight, fontWeight: FontWeight.w600, fontSize: 32.sp);
+  static final TextStyle semi_20 = GoogleFonts.workSans(color: AppColors.textLight, fontWeight: FontWeight.w600, fontSize: 20.sp);
+
   static final TextStyle medium_80 = GoogleFonts.workSans(color: AppColors.textLight, fontWeight: FontWeight.w500, fontSize: 80.sp);
   static final TextStyle medium_48 = GoogleFonts.workSans(color: AppColors.textLight, fontWeight: FontWeight.w500, fontSize: 48.sp);
   static final TextStyle medium_44 = GoogleFonts.workSans(color: AppColors.textLight, fontWeight: FontWeight.w500, fontSize: 44.sp);

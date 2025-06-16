@@ -17,6 +17,10 @@ class AppImages{
   static String profile = '$icons/profile.svg';
   static String settings = '$icons/settings.svg';
 
+  static String arrow = '$icons/arrow.svg';
+  static String mail = '$icons/mail.svg';
+  static String privacy = '$icons/privacy.svg';
+
   static String imageNotFound = '$images/image_not_found.png';
   static String logo = '$images/logo.png';
 
