@@ -12,7 +12,7 @@ class RegisterDTO {
   Map<String, dynamic> toJson() {
     return {
       'email': email,
-      'username': username,
+      'name': username,
       'password': password,
     };
   }

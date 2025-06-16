@@ -1,5 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:rashed/core/resources/app_routes.dart';
+import 'package:rashed/core/utils/navigator.dart';
+import 'package:rashed/features/auth/data/dto/login.dart';
+import 'package:rashed/features/auth/data/repositories/user_repository.dart';
 
 part 'login_state.dart';
 
@@ -14,7 +18,11 @@ class LoginCubit extends Cubit<LoginState> {
   login() async {
     if(!emailKey.currentState!.validate() || !passwordKey.currentState!.validate()) return;
     emit(LoginLoading());
-    await Future.delayed(const Duration(seconds: 1));
+    final success = await UserRepository.login(LoginDTO(
+      email: emailController.text,
+      password: passwordController.text,
+    ));
+    if(success) popAllAndPushName(AppRoutes.home);
     emit(LoginDone());
   }
 }

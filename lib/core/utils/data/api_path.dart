@@ -1,5 +1,5 @@
 class ApiPaths {
-  static const String base = 'http://209.38.155.136:8001/api';
+  static const String base = 'https://rashed-server.vercel.app';
 
 
   static const String auth = '/auth';

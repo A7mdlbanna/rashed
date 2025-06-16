@@ -1,5 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:rashed/features/auth/data/dto/register.dart';
+
+import '../../../../core/resources/app_routes.dart';
+import '../../../../core/utils/navigator.dart';
+import '../../data/repositories/user_repository.dart';
 
 part 'register_state.dart';
 
@@ -18,7 +23,12 @@ class RegisterCubit extends Cubit<RegisterState> {
   register() async {
     if(validate) return;
     emit(RegisterLoading());
-    await Future.delayed(const Duration(seconds: 1));
+    final success = await UserRepository.register(RegisterDTO(
+      username: nameController.text,
+      email: emailController.text,
+      password: passwordController.text,
+    ));
+    if(success) popAllAndPushName(AppRoutes.home);
     emit(RegisterDone());
   }
 

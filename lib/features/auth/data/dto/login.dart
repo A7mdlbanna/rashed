@@ -8,7 +8,7 @@ class LoginDTO {
   final String password;
 
   Map<String, dynamic> toJson() => {
-    'username': email,
+    'email': email,
     'password': password,
   };
 }

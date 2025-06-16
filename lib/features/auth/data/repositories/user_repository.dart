@@ -1,3 +1,4 @@
+import 'package:rashed/core/utils/app_toast.dart';
 import 'package:rashed/core/utils/data/index.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
@@ -23,10 +24,11 @@ class UserRepository {
       );
 
       debugPrint(response.data.toString());
+      AppToast.toast(msg: response.data['message']);
 
       if(response.statusCode! < 300){
-        await AuthRepository.setToken(response.data['access_token']);
-        await setUser(User.fromJson(response.data['data']));
+        await AuthRepository.setToken(response.data['data']['token']);
+        await setUser(User.fromJson(response.data['data']['user']));
         return true;
       }
     } catch (e) {
@@ -43,13 +45,14 @@ class UserRepository {
         isAuth: false,
       );
 
+      debugPrint(response.data.toString());
+      AppToast.toast(msg: response.data['message'] ?? 'Created Successfully');
+
       if(response.statusCode! < 300) {
-        await AuthRepository.setToken(response.data['access_token']);
+        await AuthRepository.setToken(response.data['data']['token']);
         await setUser(User.fromJson(response.data['data']));
         return true;
       }
-
-      ErrorHandler.show(response.data);
     } catch (e) {
       debugPrint(e.toString());
     }
@@ -65,24 +68,7 @@ class UserRepository {
         AuthRepository.removeToken();
         return true;
       } else {
-        ErrorHandler.show(response.data);
-      }
-    } catch (e) {
-      debugPrint(e.toString());
-    }
-    return false;
-  }
-
-  static Future<bool> deleteAccount(int id) async {
-    try{
-      final Response<dynamic> response = await ApiService.deleteApi(ApiPaths.deleteAccount(id));
-
-      if(response.statusCode! < 300){
-        removeUser();
-        AuthRepository.removeToken();
-        return true;
-      } else {
-        ErrorHandler.show(response.data);
+        AppToast.toast(msg: response.data['message'] ?? 'Cannot Logout');
       }
     } catch (e) {
       debugPrint(e.toString());
