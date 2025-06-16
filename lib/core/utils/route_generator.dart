@@ -3,6 +3,7 @@ import 'package:rashed/features/auth/login/ui/login_screen.dart';
 import 'package:rashed/features/on_boarding.dart';
 
 import '../../features/auth/register/ui/register_screen.dart';
+import '../../features/home/ui/home_screen.dart';
 import '../../features/splash_screen.dart';
 import '../resources/app_routes.dart';
 
@@ -25,6 +26,9 @@ class RouteGenerator{
       case AppRoutes.register:
         return _screenRedirect(const RegisterScreen());
 
+      case AppRoutes.home:
+        return _screenRedirect(const HomeScreen());
+
       default:
         return _errorRoute();
 
@@ -39,7 +43,7 @@ class RouteGenerator{
     return MaterialPageRoute<dynamic>(builder: (_) {
       return const Scaffold(
         body: Center(
-          child: Text('No Route Found'),
+          child: Text('No Route Found', style: TextStyle(color: Colors.white)),
         ),
       );
     });

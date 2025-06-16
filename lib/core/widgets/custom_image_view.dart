@@ -21,6 +21,7 @@ class CustomImageView extends StatelessWidget {
   BorderRadius? radius;
   BoxBorder? border;
   bool circle;
+  bool reverse;
 
   ///a [CustomImageView] it can be used for showing any type of images
   /// it will shows the placeholder image if image is not found on network image
@@ -36,6 +37,7 @@ class CustomImageView extends StatelessWidget {
     this.margin,
     this.border,
     this.circle = false,
+    this.reverse = false,
     this.placeHolder = 'assets/images/image_not_found.png',
   });
 
@@ -50,11 +52,14 @@ class CustomImageView extends StatelessWidget {
   }
 
   Widget _buildWidget() {
-    return Padding(
-      padding: margin ?? EdgeInsets.zero,
-      child: InkWell(
-        onTap: onTap,
-        child: _buildCircleImage(),
+    return Directionality(
+      textDirection: reverse ? TextDirection.rtl : TextDirection.ltr,
+      child: Padding(
+        padding: margin ?? EdgeInsets.zero,
+        child: InkWell(
+          onTap: onTap,
+          child: _buildCircleImage(),
+        ),
       ),
     );
   }
@@ -104,6 +109,7 @@ class CustomImageView extends StatelessWidget {
               width: width,
               fit: fit!,
               color: color,
+              matchTextDirection: reverse,
             ),
           );
         case ImageType.file:
