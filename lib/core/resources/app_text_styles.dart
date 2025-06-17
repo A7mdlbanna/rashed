@@ -10,6 +10,7 @@ class AppCorners {
   static BorderRadius border_20 = BorderRadius.circular(20.r);
   static BorderRadius border_28 = BorderRadius.circular(28.r);
   static BorderRadius border_26 = BorderRadius.circular(26.r);
+  static BorderRadius border_24 = BorderRadius.circular(24.r);
   static BorderRadius border_40 = BorderRadius.circular(40.r);
   static BorderRadius topBorder_26 = BorderRadius.only(
     topLeft: Radius.circular(26.r),
@@ -46,6 +47,7 @@ class AppTextStyles {
   static final TextStyle medium_36 = GoogleFonts.workSans(color: AppColors.textLight, fontWeight: FontWeight.w500, fontSize: 36.sp);
   static final TextStyle medium_32 = GoogleFonts.workSans(color: AppColors.textLight, fontWeight: FontWeight.w500, fontSize: 32.sp);
   static final TextStyle medium_28 = GoogleFonts.workSans(color: AppColors.textLight, fontWeight: FontWeight.w500, fontSize: 28.sp);
+  static final TextStyle medium_25 = GoogleFonts.workSans(color: AppColors.textLight, fontWeight: FontWeight.w500, fontSize: 25.sp);
   static final TextStyle medium_24 = GoogleFonts.workSans(color: AppColors.textLight, fontWeight: FontWeight.w500, fontSize: 24.sp);
   static final TextStyle medium_22 = GoogleFonts.workSans(color: AppColors.textLight, fontWeight: FontWeight.w500, fontSize: 22.sp);
   static final TextStyle medium_20 = GoogleFonts.workSans(color: AppColors.textLight, fontWeight: FontWeight.w500, fontSize: 20.sp);
@@ -57,4 +59,5 @@ class AppTextStyles {
   static final TextStyle regular_40 = GoogleFonts.workSans(color: AppColors.textLight, fontWeight: FontWeight.w400, fontSize: 40.sp);
   static final TextStyle regular_30 = GoogleFonts.workSans(color: AppColors.textLight, fontWeight: FontWeight.w400, fontSize: 30.sp);
   static final TextStyle regular_24 = GoogleFonts.workSans(color: AppColors.textLight, fontWeight: FontWeight.w400, fontSize: 24.sp);
+  static final TextStyle regular_16 = GoogleFonts.workSans(color: AppColors.textLight, fontWeight: FontWeight.w400, fontSize: 16.sp);
 }

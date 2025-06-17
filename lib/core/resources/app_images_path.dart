@@ -21,6 +21,11 @@ class AppImages{
   static String mail = '$icons/mail.svg';
   static String privacy = '$icons/privacy.svg';
 
+  static String notifications = '$icons/notifications.png';
+  static String language = '$icons/language.png';
+  static String appearance = '$icons/appearance.png';
+  static String logout = '$icons/logout.png';
+
   static String imageNotFound = '$images/image_not_found.png';
   static String logo = '$images/logo.png';
 

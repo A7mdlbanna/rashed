@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:rashed/core/helper/index.dart';
+import 'package:rashed/core/resources/app_colors.dart';
 
 class CustomSwitch extends StatelessWidget {
   const CustomSwitch({
@@ -26,21 +28,21 @@ class CustomSwitch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: height,
-        width: width,
-        margin: margin,
-        child: alignment != null
-            ? Align(
-                alignment: alignment ?? Alignment.center,
-                child: switchWidget,
-              )
-            : switchWidget);
+      height: height ?? 30.w,
+      width: width ?? 50.w,
+      margin: margin,
+      child: alignment != null ? Align(
+        alignment: alignment ?? Alignment.center,
+        child: switchWidget,
+      ) : switchWidget,
+    );
   }
 
   Widget get switchWidget => CupertinoSwitch(
-        value: value ?? false,
-        onChanged: (value) {
-          onChange(value);
-        },
-      );
+    activeColor: AppColors.primaryDark,
+    value: value ?? false,
+    onChanged: (value) {
+      onChange(value);
+    },
+  );
 }
