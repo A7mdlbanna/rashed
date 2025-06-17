@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rashed/core/helper/index.dart';
 import 'package:rashed/core/resources/index.dart';
+import 'package:rashed/core/utils/navigator.dart';
 import 'package:rashed/core/widgets/index.dart';
 import 'package:rashed/features/home/cubit/home_cubit.dart';
 import 'package:rashed/features/profile/services/contact_us.dart';
@@ -26,7 +27,7 @@ class ProfileScreen extends StatelessWidget {
           70.heightBox,
           ProfileAction(onTap: () => context.read<HomeCubit>().selectNav(2), title: 'Settings', icon: AppImages.settings),
           40.heightBox,
-          ProfileAction(onTap: () {}, title: 'Change Password', icon: AppImages.lock),
+          ProfileAction(onTap: () => pushName(AppRoutes.changePass), title: 'Change Password', icon: AppImages.lock),
           40.heightBox,
           ProfileAction(onTap: contactUs, title: 'Contact Us', icon: AppImages.mail),
           40.heightBox,

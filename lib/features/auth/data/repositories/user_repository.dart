@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:rashed/features/auth/data/dto/login.dart';
 
-import '../../../../core/utils/error_handler.dart';
 import '../dto/register.dart';
 import '../dto/update.dart';
 import '../models/user.dart';
@@ -77,18 +76,19 @@ class UserRepository {
   }
 
 
-  static Future<bool> update(UpdateDTO updateRequest) async {
+  static Future<bool> changePass(ChangePassDTO changePassDto) async {
     try {
-      final Response<dynamic> response = await ApiService.patchApi(
-        ApiPaths.update(1),
-        formData: await updateRequest.toFormData(),
+      final Response<dynamic> response = await ApiService.postApi(
+        ApiPaths.changePass,
+        body: changePassDto.toJson(),
       );
 
+      print(response.data);
       if(response.statusCode! < 300){
-        await setUser(User.fromJson(response.data['data']));
+        AppToast.toast(msg: response.data['message'] ?? 'Changed Password Successfully');
         return true;
       } else {
-        ErrorHandler.show(response.data);
+        AppToast.toast(msg: response.data['message'] ?? 'Change Password Failed');
       }
     } catch (e) {
       debugPrint(e.toString());

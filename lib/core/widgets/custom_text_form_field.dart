@@ -157,7 +157,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     labelStyle: AppTextStyles.medium_24,
     hintText: widget.hintText ?? "",
     hintStyle: widget.hintStyle ?? AppTextStyles.medium_24.copyWith(color: AppColors.white.withOpacity(.5)),
-    prefixIcon: widget.prefix == null ? null : CustomImageView(imagePath: widget.prefix, margin: EdgeInsets.symmetric(horizontal: 10.w)),
+    prefixIcon: widget.prefix == null ? null : CustomImageView(imagePath: widget.prefix, margin: EdgeInsets.symmetric(horizontal: 15.w)),
     prefixIconConstraints: widget.prefixConstraints ?? const BoxConstraints(maxWidth: 44, maxHeight: 30),
     prefixIconColor: Theme.of(context).primaryColor,
     suffixIcon: suffixIcon,

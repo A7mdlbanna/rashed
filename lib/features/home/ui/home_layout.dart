@@ -16,7 +16,7 @@ class HomeScreenLayout extends StatelessWidget {
         builder: (context, state) {
           final cubit = context.read<HomeCubit>();
           return Scaffold(
-            appBar: MyAppBar(title: cubit.title),
+            appBar: MyAppBar(title: cubit.title, back: false),
             bottomNavigationBar: const MyBottomNavBar(),
             body: PageView(controller: cubit.pageController, physics: const NeverScrollableScrollPhysics(), children: cubit.screens),
           );

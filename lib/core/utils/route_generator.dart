@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rashed/features/auth/login/ui/login_screen.dart';
+import 'package:rashed/features/auth/reset_pass/ui/change_pass_screen.dart';
 import 'package:rashed/features/home/ui/home_layout.dart';
 import 'package:rashed/features/on_boarding.dart';
 
@@ -28,6 +29,9 @@ class RouteGenerator{
 
       case AppRoutes.home:
         return _screenRedirect(const HomeScreenLayout());
+
+      case AppRoutes.changePass:
+        return _screenRedirect(const ChangePassScreen());
 
       default:
         return _errorRoute();
