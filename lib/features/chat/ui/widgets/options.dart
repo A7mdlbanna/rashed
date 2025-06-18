@@ -15,6 +15,7 @@ class Options extends StatelessWidget {
     return PopupMenuButton(
       color: const Color(0xFF333936),
       position: PopupMenuPosition.under,
+      padding: EdgeInsetsGeometry.zero,
       itemBuilder: (BuildContext context) => [
         PopupMenuItem(onTap: () => cubit.startNewSession(), child: const AppText(text: 'Start new Chat')),
         PopupMenuItem(onTap: () {/*TODO: Export*/}, child: const AppText(text: 'Export Report')),

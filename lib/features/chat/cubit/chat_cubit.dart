@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:rashed/features/chat/data/repository/chat_repository.dart';
+import 'package:rashed/features/chat/services/attach_file.dart';
 
 import '../../../core/utils/navigator.dart';
 import '../data/models/message.dart';

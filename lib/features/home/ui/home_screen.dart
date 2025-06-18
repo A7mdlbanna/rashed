@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rashed/core/helper/index.dart';
 import 'package:rashed/core/utils/navigator.dart';
+import 'package:rashed/features/chat/data/enum/chat_type.dart';
 
 import '../../../core/resources/index.dart';
 import '../../../core/widgets/index.dart';
@@ -24,7 +25,7 @@ class HomeScreen extends StatelessWidget {
             child: Row(
               children: [
                 HomeCard(
-                  onTap: () => pushName(AppRoutes.chat),
+                  onTap: () => pushName(AppRoutes.chat, arguments: ChatType.voice),
                   large: true,
                   color: AppColors.secondary,
                   icon: AppImages.star,
@@ -51,15 +52,15 @@ class HomeScreen extends StatelessWidget {
                 Column(
                   children: [
                     HomeCard(
-                      onTap: () => pushName(AppRoutes.chat),
+                      onTap: () => pushName(AppRoutes.chat, arguments: ChatType.file),
                       large: false,
                       color: AppColors.primaryDark,
                       icon: AppImages.image,
-                      child: const ActionWidget(text: 'Search \nby image'),
+                      child: const ActionWidget(text: 'Search \nby file'),
                     ),
                     const Spacer(),
                     HomeCard(
-                      onTap: () => pushName(AppRoutes.chat),
+                      onTap: () => pushName(AppRoutes.chat, arguments: ChatType.chat),
                       large: false,
                       color: AppColors.primary,
                       icon: AppImages.chat,

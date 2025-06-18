@@ -8,14 +8,17 @@ import 'package:rashed/features/chat/ui/widgets/my_message.dart';
 import 'package:rashed/features/chat/ui/widgets/options.dart';
 
 import '../cubit/chat_cubit.dart';
+import '../data/enum/chat_type.dart';
 
 class ChatScreen extends StatelessWidget {
-  const ChatScreen({super.key});
+  const ChatScreen({super.key, required this.type});
+
+   final ChatType type;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ChatCubit()..init(),
+      create: (context) => ChatCubit()..init(type),
       child: Scaffold(
         appBar: const MyAppBar(title: 'AI Chat', actions: [Options()]),
         body: BlocBuilder<ChatCubit, ChatState>(

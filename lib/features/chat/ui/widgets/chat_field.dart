@@ -6,6 +6,7 @@ import 'package:rashed/core/widgets/custom_text_form_field.dart';
 import 'package:rashed/features/chat/cubit/chat_cubit.dart';
 
 import '../../../../core/resources/index.dart';
+import '../../services/attach_file.dart';
 
 class ChatField extends StatelessWidget {
   const ChatField({super.key});
@@ -29,7 +30,11 @@ class ChatField extends StatelessWidget {
                 fillColor: const Color(0xFFD6D2D2).withValues(alpha: 0.1),
                 contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
                 onChanged: cubit.onChanged,
-                suffix: CustomImageView(onTap: () {/*TODO: attach file*/}, imagePath: AppImages.attach, margin: EdgeInsetsDirectional.only(end: 10.w)),
+                suffix: CustomImageView(
+                  onTap: () => attachPdf(cubit),
+                  imagePath: AppImages.attach,
+                  margin: EdgeInsetsDirectional.only(end: 10.w),
+                ),
               ),
             ),
             15.widthBox,

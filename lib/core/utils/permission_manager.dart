@@ -9,9 +9,11 @@ class PermissionManager {
   }
 
   ///A common method used for asking permissions
-  static Future<void> askForPermission(Permission permission) async {
+  static Future<bool> askForPermission(Permission permission) async {
     if (!await isPermissionGranted(permission)) {
-      await permission.request();
+      final status = await permission.request();
+      return status.isGranted;
     }
+    return true;
   }
 }
