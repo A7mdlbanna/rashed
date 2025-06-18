@@ -27,7 +27,7 @@ class MyMessage extends StatelessWidget {
               borderRadius: BorderRadius.circular(18.r).copyWith(bottomRight: Radius.zero),
             ),
             padding: EdgeInsets.all(16.r),
-            child: AppText(text: message.content, style: AppTextStyles.medium_22, color: AppColors.textDark),
+            child: AppText(text: message.content, style: AppTextStyles.medium_22, color: AppColors.textDark, maxLines: 1000),
           ),
           11.heightBox,
           AppText(text: message.createdAt?.format(format: 'jm'), style: AppTextStyles.light_15, color: const Color(0xFFDDDDDD)),

@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:rashed/core/helper/index.dart';
 import 'package:rashed/core/resources/app_colors.dart';
 import 'package:rashed/core/resources/app_images_path.dart';
 import 'package:rashed/core/resources/app_text_styles.dart';
+import 'package:rashed/core/utils/app_toast.dart';
+import 'package:rashed/core/utils/big_print.dart';
 import 'package:rashed/core/utils/date_time_utils.dart';
 import 'package:rashed/core/widgets/app_text_display.dart';
 import 'package:rashed/core/widgets/custom_image_view.dart';
@@ -48,7 +52,30 @@ class AiMessage extends StatelessWidget {
                   child: AppText(text: message.content, style: AppTextStyles.medium_22, maxLines: 1000),
                 ),
                 11.heightBox,
-                AppText(text: message.createdAt?.format(format: 'jm'), style: AppTextStyles.light_15, color: const Color(0xFFDDDDDD)),
+                Row(
+                  children: [
+                    10.widthBox,
+                    CustomImageView(
+                      imagePath: AppImages.copy,
+                      onTap: () async {
+                        await Clipboard.setData(ClipboardData(text: message.content ?? ''));
+                        AppToast.toast(msg: 'Copied to clipboard');
+                      },
+                      color: AppColors.textLight,
+                    ),
+                    10.widthBox,
+                    CustomImageView(
+                      imagePath: AppImages.speaker,
+                      onTap: () async {
+                        FlutterTts().stop();
+                        FlutterTts().speak(message.content ?? '');
+                      },
+                      color: AppColors.textLight,
+                    ),
+                    const Spacer(),
+                    AppText(text: message.createdAt?.format(format: 'jm'), style: AppTextStyles.light_15, color: const Color(0xFFDDDDDD)),
+                  ],
+                ),
               ],
             ),
           ),

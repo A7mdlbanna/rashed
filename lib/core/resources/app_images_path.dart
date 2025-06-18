@@ -29,6 +29,8 @@ class AppImages{
   static String send = '$icons/send.svg';
   static String option = '$icons/option.svg';
   static String attach = '$icons/attach.svg';
+  static String copy = '$icons/copy.svg';
+  static String speaker = '$icons/speaker.svg';
 
   static String imageNotFound = '$images/image_not_found.png';
   static String logo = '$images/logo.png';
