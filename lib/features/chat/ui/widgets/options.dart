@@ -18,7 +18,6 @@ class Options extends StatelessWidget {
       padding: EdgeInsetsGeometry.zero,
       itemBuilder: (BuildContext context) => [
         PopupMenuItem(onTap: () => cubit.startNewSession(), child: const AppText(text: 'Start new Chat')),
-        PopupMenuItem(onTap: () {/*TODO: Export*/}, child: const AppText(text: 'Export Report')),
       ],
       child: FittedBox(
         fit: BoxFit.scaleDown,

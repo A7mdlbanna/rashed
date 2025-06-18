@@ -14,3 +14,9 @@ final class MessagesDone extends ChatState {}
 
 final class MessageCreated extends ChatState {}
 final class MessageSent extends ChatState {}
+
+final class ExportLoading extends ChatState {
+  final String id;
+  ExportLoading(this.id);
+}
+final class ExportDone extends ChatState {}

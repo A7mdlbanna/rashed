@@ -5,8 +5,10 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:rashed/features/chat/data/repository/chat_repository.dart';
 import 'package:rashed/features/chat/services/attach_file.dart';
+import 'package:rashed/features/chat/services/export_file.dart';
 
 import '../../../core/utils/navigator.dart';
+import '../data/enum/chat_type.dart';
 import '../data/models/message.dart';
 
 part 'chat_state.dart';
@@ -14,8 +16,14 @@ part 'chat_state.dart';
 class ChatCubit extends Cubit<ChatState> {
   ChatCubit() : super(ChatInitial());
 
-  init() async {
+  init(ChatType type) async {
     if(ChatRepository.sessionId == null) await startSession();
+    if(type == ChatType.file) {
+      () async {
+        await attachPdf(this);
+        emit(MessagesDone());
+      }();
+    }
     await getMessages();
   }
 
@@ -44,10 +52,10 @@ class ChatCubit extends Cubit<ChatState> {
   onChanged(v) => emit(TextChanged());
 
   Timer? timer;
-  sendMessage() async {
+  sendMessage({Message? customMessage}) async {
     // cancel timer if there is an old response that didn't come
     timer?.cancel();
-    final message = Message(id: '0000', isFromBot: false, content: chatController.text.toString(), type: 'TEXT', createdAt: DateTime.now());
+    final message = customMessage ?? Message(id: '0000', isFromBot: false, content: chatController.text.toString(), type: 'TEXT', createdAt: DateTime.now());
     messages.insert(0, message);
     chatController.clear();
     emit(MessageCreated());
@@ -70,6 +78,16 @@ class ChatCubit extends Cubit<ChatState> {
     emit(MessageSent());
   }
 
+  void export(Message message) async {
+    emit(ExportLoading(message.id ?? '0000'));
+    await exportAndSavePdf(
+      question: messages[messages.indexOf(message) + 1].content ?? '',
+      response: message.content ?? '',
+    );
+    emit(ExportDone());
+  }
+  
+  
   @override
   Future<void> close() {
     timer?.cancel();

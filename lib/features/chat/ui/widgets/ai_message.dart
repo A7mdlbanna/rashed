@@ -1,17 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:rashed/core/helper/index.dart';
-import 'package:rashed/core/resources/app_colors.dart';
-import 'package:rashed/core/resources/app_images_path.dart';
-import 'package:rashed/core/resources/app_text_styles.dart';
+import 'package:rashed/core/widgets/index.dart';
+import 'package:rashed/core/resources/index.dart';
 import 'package:rashed/core/utils/app_toast.dart';
-import 'package:rashed/core/utils/big_print.dart';
 import 'package:rashed/core/utils/date_time_utils.dart';
-import 'package:rashed/core/widgets/app_text_display.dart';
-import 'package:rashed/core/widgets/custom_image_view.dart';
 
+import '../../cubit/chat_cubit.dart';
 import '../../data/models/message.dart';
 
 class AiMessage extends StatelessWidget {
@@ -63,7 +60,7 @@ class AiMessage extends StatelessWidget {
                       },
                       color: AppColors.textLight,
                     ),
-                    10.widthBox,
+                    15.widthBox,
                     CustomImageView(
                       imagePath: AppImages.speaker,
                       onTap: () async {
@@ -71,6 +68,17 @@ class AiMessage extends StatelessWidget {
                         FlutterTts().speak(message.content ?? '');
                       },
                       color: AppColors.textLight,
+                    ),
+                    15.widthBox,
+                    BlocBuilder<ChatCubit, ChatState>(
+                      builder: (context, state) {
+                        if(state is ExportLoading && state.id == message.id) return SizedBox(width: 15, height: 15, child: CircularProgressIndicator(strokeWidth: 2, color: AppColors.textLight));
+                        return CustomImageView(
+                          imagePath: AppImages.download,
+                          onTap: () => context.read<ChatCubit>().export(message),
+                          color: AppColors.textLight,
+                        );
+                      }
                     ),
                     const Spacer(),
                     AppText(text: message.createdAt?.format(format: 'jm'), style: AppTextStyles.light_15, color: const Color(0xFFDDDDDD)),

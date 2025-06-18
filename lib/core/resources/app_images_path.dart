@@ -20,6 +20,7 @@ class AppImages{
   static String arrow = '$icons/arrow.svg';
   static String mail = '$icons/mail.svg';
   static String privacy = '$icons/privacy.svg';
+  static String download = '$icons/download.svg';
 
   static String notifications = '$icons/notifications.png';
   static String language = '$icons/language.png';
@@ -42,4 +43,5 @@ class AppImages{
   static String glass = '$images/glass.png';
 
   static String book = '$images/book.png';
+  static String pdf = '$images/pdf.png';
 }
