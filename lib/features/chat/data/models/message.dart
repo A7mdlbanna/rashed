@@ -1,4 +1,6 @@
-class Message {
+import 'package:equatable/equatable.dart';
+
+class Message extends Equatable {
   Message({
     this.id,
     this.content,
@@ -28,5 +30,17 @@ class Message {
     map['createdAt'] = createdAt;
     return map;
   }
+
+  Map<String, dynamic> toDto() {
+    final map = <String, dynamic>{};
+    map['content'] = content;
+    map['type'] = type;
+    map['messageReturn'] = false;
+    map['metadata'] = {};
+    return map;
+  }
+
+  @override
+  List<Object?> get props => [id];
 
 }

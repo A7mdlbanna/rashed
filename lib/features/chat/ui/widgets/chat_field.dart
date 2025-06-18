@@ -29,21 +29,27 @@ class ChatField extends StatelessWidget {
                 fillColor: const Color(0xFFD6D2D2).withValues(alpha: 0.1),
                 contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
                 onChanged: cubit.onChanged,
-                suffix: CustomImageView(onTap: () {}, imagePath: AppImages.attach, margin: EdgeInsetsDirectional.only(end: 10.w)),
+                suffix: CustomImageView(onTap: () {/*TODO: attach file*/}, imagePath: AppImages.attach, margin: EdgeInsetsDirectional.only(end: 10.w)),
               ),
             ),
             15.widthBox,
-            Container(
-              width: 85.w, height: 75.h,
-              decoration: BoxDecoration(
-                color: const Color(0xFF1E2C26),
-                image: DecorationImage(image: AssetImage(AppImages.mesh1), fit: BoxFit.cover),
-                borderRadius: BorderRadius.circular(26.r),
+            GestureDetector(
+              onTap: () {
+                if(cubit.chatController.text.isNotEmpty) cubit.sendMessage();
+                // TODO: record voice (stt)
+              },
+              child: Container(
+                width: 85.w, height: 75.h,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF1E2C26),
+                  image: DecorationImage(image: AssetImage(AppImages.mesh1), fit: BoxFit.cover),
+                  borderRadius: BorderRadius.circular(26.r),
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+                child: cubit.chatController.text.isEmpty
+                    ? CustomImageView(imagePath: AppImages.voice, width: 45.h, height: 40.h, color: AppColors.textLight)
+                    : CustomImageView(imagePath: AppImages.send, fit: BoxFit.scaleDown, color: AppColors.textLight),
               ),
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
-              child: cubit.chatController.text.isEmpty
-                  ? CustomImageView(imagePath: AppImages.voice, width: 45.h, height: 40.h, color: AppColors.textLight)
-                  : CustomImageView(imagePath: AppImages.send, fit: BoxFit.scaleDown, color: AppColors.textLight),
             ),
           ],
         );

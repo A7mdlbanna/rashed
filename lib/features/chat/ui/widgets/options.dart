@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rashed/core/helper/index.dart';
+import 'package:rashed/features/chat/cubit/chat_cubit.dart';
 
 import '../../../../core/resources/index.dart';
 import '../../../../core/widgets/index.dart';
@@ -9,12 +11,13 @@ class Options extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<ChatCubit>();
     return PopupMenuButton(
       color: const Color(0xFF333936),
       position: PopupMenuPosition.under,
       itemBuilder: (BuildContext context) => [
-        PopupMenuItem(onTap: () {}, child: const AppText(text: 'Start new Chat')),
-        PopupMenuItem(onTap: () {}, child: const AppText(text: 'Export Report')),
+        PopupMenuItem(onTap: () => cubit.startNewSession(), child: const AppText(text: 'Start new Chat')),
+        PopupMenuItem(onTap: () {/*TODO: Export*/}, child: const AppText(text: 'Export Report')),
       ],
       child: FittedBox(
         fit: BoxFit.scaleDown,

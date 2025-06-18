@@ -83,7 +83,7 @@ class UserRepository {
         body: changePassDto.toJson(),
       );
 
-      print(response.data);
+      debugPrint(response.data);
       if(response.statusCode! < 300){
         AppToast.toast(msg: response.data['message'] ?? 'Changed Password Successfully');
         return true;

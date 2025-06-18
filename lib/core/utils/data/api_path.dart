@@ -10,4 +10,6 @@ class ApiPaths {
 
   static const String messages = '/messages';
   static const String startSession = '$messages/session';
+  static String getMessages(String id) => '$messages/get-message/$id';
+  static String sendMessage(String id) => '$messages/send-message/$id';
 }
