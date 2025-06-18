@@ -23,23 +23,25 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.transparent,
       automaticallyImplyLeading: false,
       leadingWidth: 110.w,
-      leading: back && Navigator.of(context).canPop() ? FittedBox(
-        fit: BoxFit.scaleDown,
-        child: Container(
-          width: 77.w,
-          height: 68.h,
-          margin: EdgeInsetsDirectional.only(start: 33.w),
-          padding: EdgeInsets.all(20.r),
-          decoration: BoxDecoration(
-            color: AppColors.primaryDark,
-            borderRadius: AppCorners.border_26,
-          ),
-          child: CustomImageView(
-            imagePath: AppImages.back,
-            onTap: onBack ?? () => Navigator.pop(context),
-            width: 35.w,
-            height: 25.h,
-            fit: BoxFit.scaleDown,
+      leading: back && Navigator.of(context).canPop() ? InkWell(
+        onTap: onBack ?? () => Navigator.pop(context),
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Container(
+            width: 77.w,
+            height: 68.h,
+            margin: EdgeInsetsDirectional.only(start: 33.w),
+            padding: EdgeInsets.all(20.r),
+            decoration: BoxDecoration(
+              color: AppColors.primaryDark,
+              borderRadius: AppCorners.border_26,
+            ),
+            child: CustomImageView(
+              imagePath: AppImages.back,
+              width: 35.w,
+              height: 25.h,
+              fit: BoxFit.scaleDown,
+            ),
           ),
         ),
       ) : null,

@@ -32,7 +32,7 @@ class CustomTextFormField extends StatefulWidget {
     this.fillColor,
     this.filled = false,
     this.enabled = true,
-    this.validator, this.formatters, this.onTap, this.onChanged, this.borderColor, this.borderRadius, this.labelText,
+    this.validator, this.formatters, this.onTap, this.onChanged, this.borderColor, this.borderWidth, this.borderRadius, this.labelText,
   });
 
   final GlobalKey<FormState>? formKey;
@@ -82,6 +82,8 @@ class CustomTextFormField extends StatefulWidget {
   final Color? borderColor;
 
   final double? borderRadius;
+
+  final double? borderWidth;
 
   final Color? fillColor;
 
@@ -151,8 +153,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 
   InputDecoration get decoration => InputDecoration(
     alignLabelWithHint: true,
-    border: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white), borderRadius: AppCorners.border_16),
-    focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white, width: 2), borderRadius: AppCorners.border_16),
+    border: OutlineInputBorder(borderSide: BorderSide(color: widget.borderColor ?? Colors.white), borderRadius: BorderRadius.circular(widget.borderRadius ?? 16.r)),
+    focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: widget.borderColor ?? Colors.white, width: widget.borderWidth ?? 2), borderRadius: BorderRadius.circular(widget.borderRadius ?? 16.r)),
     labelText: widget.labelText,
     labelStyle: AppTextStyles.medium_24,
     hintText: widget.hintText ?? "",

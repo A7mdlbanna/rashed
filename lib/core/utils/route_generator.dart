@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rashed/features/auth/login/ui/login_screen.dart';
 import 'package:rashed/features/auth/reset_pass/ui/change_pass_screen.dart';
+import 'package:rashed/features/chat/ui/chat_screen.dart';
 import 'package:rashed/features/home/ui/home_layout.dart';
 import 'package:rashed/features/on_boarding.dart';
 
@@ -32,6 +33,9 @@ class RouteGenerator{
 
       case AppRoutes.changePass:
         return _screenRedirect(const ChangePassScreen());
+
+      case AppRoutes.chat:
+        return _screenRedirect(const ChatScreen());
 
       default:
         return _errorRoute();

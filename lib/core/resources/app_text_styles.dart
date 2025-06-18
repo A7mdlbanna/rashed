@@ -59,5 +59,8 @@ class AppTextStyles {
   static final TextStyle regular_40 = GoogleFonts.workSans(color: AppColors.textLight, fontWeight: FontWeight.w400, fontSize: 40.sp);
   static final TextStyle regular_30 = GoogleFonts.workSans(color: AppColors.textLight, fontWeight: FontWeight.w400, fontSize: 30.sp);
   static final TextStyle regular_24 = GoogleFonts.workSans(color: AppColors.textLight, fontWeight: FontWeight.w400, fontSize: 24.sp);
+  static final TextStyle regular_20 = GoogleFonts.workSans(color: AppColors.textLight, fontWeight: FontWeight.w400, fontSize: 20.sp);
   static final TextStyle regular_16 = GoogleFonts.workSans(color: AppColors.textLight, fontWeight: FontWeight.w400, fontSize: 16.sp);
+
+  static final TextStyle light_15 = GoogleFonts.workSans(color: AppColors.textLight, fontWeight: FontWeight.w300, fontSize: 15.sp);
 }

@@ -7,5 +7,7 @@ class ApiPaths {
   static const String logout = '$auth/logout';
   static const String register = '$auth/register';
   static const String changePass = '$auth/reset-password';
-  static String deleteAccount(int id) => '$auth/delete/$id/';
+
+  static const String messages = '/messages';
+  static const String startSession = '$messages/session';
 }

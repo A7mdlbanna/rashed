@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rashed/core/helper/index.dart';
+import 'package:rashed/core/utils/navigator.dart';
 
 import '../../../core/resources/index.dart';
 import '../../../core/widgets/index.dart';
@@ -23,7 +24,7 @@ class HomeScreen extends StatelessWidget {
             child: Row(
               children: [
                 HomeCard(
-                  onTap: () {},
+                  onTap: () => pushName(AppRoutes.chat),
                   large: true,
                   color: AppColors.secondary,
                   icon: AppImages.star,
@@ -50,7 +51,7 @@ class HomeScreen extends StatelessWidget {
                 Column(
                   children: [
                     HomeCard(
-                      onTap: () {},
+                      onTap: () => pushName(AppRoutes.chat),
                       large: false,
                       color: AppColors.primaryDark,
                       icon: AppImages.image,
@@ -58,7 +59,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                     const Spacer(),
                     HomeCard(
-                      onTap: () {},
+                      onTap: () => pushName(AppRoutes.chat),
                       large: false,
                       color: AppColors.primary,
                       icon: AppImages.chat,

@@ -26,6 +26,10 @@ class AppImages{
   static String appearance = '$icons/appearance.png';
   static String logout = '$icons/logout.png';
 
+  static String send = '$icons/send.svg';
+  static String option = '$icons/option.svg';
+  static String attach = '$icons/attach.svg';
+
   static String imageNotFound = '$images/image_not_found.png';
   static String logo = '$images/logo.png';
 
@@ -35,5 +39,5 @@ class AppImages{
   static String meshNav = '$images/nav_mesh.png';
   static String glass = '$images/glass.png';
 
-
+  static String book = '$images/book.png';
 }
