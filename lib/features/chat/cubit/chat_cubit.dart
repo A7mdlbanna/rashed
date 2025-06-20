@@ -16,15 +16,15 @@ part 'chat_state.dart';
 class ChatCubit extends Cubit<ChatState> {
   ChatCubit() : super(ChatInitial());
 
-  init(ChatType type) async {
-    if(ChatRepository.sessionId == null) await startSession();
+  init(ChatType type, {String? sessionId}) async {
+    if(sessionId == null && ChatRepository.sessionId == null) await startSession();
     if(type == ChatType.file) {
       () async {
         await attachPdf(this);
         emit(MessagesDone());
       }();
     }
-    await getMessages();
+    await getMessages(sessionId: sessionId);
   }
 
   startSession() async {
@@ -42,9 +42,9 @@ class ChatCubit extends Cubit<ChatState> {
   }
 
   List<Message> messages = [];
-  getMessages({bool loading = true}) async {
+  getMessages({bool loading = true, String? sessionId}) async {
     if(loading) emit(MessagesLoading());
-    messages = await ChatRepository.getMessages();
+    messages = await ChatRepository.getMessages(session: sessionId);
     emit(MessagesDone());
   }
 

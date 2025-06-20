@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rashed/core/helper/index.dart';
+import 'package:rashed/core/utils/navigator.dart';
 import 'package:rashed/features/chat/cubit/chat_cubit.dart';
 
 import '../../../../core/resources/index.dart';
@@ -18,6 +19,7 @@ class Options extends StatelessWidget {
       padding: EdgeInsetsGeometry.zero,
       itemBuilder: (BuildContext context) => [
         PopupMenuItem(onTap: () => cubit.startNewSession(), child: const AppText(text: 'Start new Chat')),
+        PopupMenuItem(onTap: () => pushName(AppRoutes.history), child: const AppText(text: 'Chat History')),
       ],
       child: FittedBox(
         fit: BoxFit.scaleDown,

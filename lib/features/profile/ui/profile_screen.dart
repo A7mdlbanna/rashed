@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rashed/core/helper/index.dart';
 import 'package:rashed/core/resources/index.dart';
 import 'package:rashed/core/utils/navigator.dart';
 import 'package:rashed/core/widgets/index.dart';
-import 'package:rashed/features/home/cubit/home_cubit.dart';
 import 'package:rashed/features/profile/services/contact_us.dart';
 import 'package:rashed/features/profile/services/privacy_policy.dart';
 
@@ -25,7 +23,7 @@ class ProfileScreen extends StatelessWidget {
           5.heightBox,
           AppText(translation: UserRepository.user?.email, style: AppTextStyles.bold_20, color: const Color(0xFF7E7C81)),
           70.heightBox,
-          ProfileAction(onTap: () => context.read<HomeCubit>().selectNav(2), title: 'Settings', icon: AppImages.settings),
+          ProfileAction(onTap: () => pushName(AppRoutes.history), title: 'Chat History', icon: AppImages.history),
           40.heightBox,
           ProfileAction(onTap: () => pushName(AppRoutes.changePass), title: 'Change Password', icon: AppImages.lock),
           40.heightBox,

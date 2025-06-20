@@ -7,6 +7,7 @@ import 'package:rashed/features/home/ui/home_layout.dart';
 import 'package:rashed/features/on_boarding.dart';
 
 import '../../features/auth/register/ui/register_screen.dart';
+import '../../features/history/ui/history_screen.dart';
 import '../../features/splash_screen.dart';
 import '../resources/app_routes.dart';
 
@@ -36,8 +37,11 @@ class RouteGenerator{
         return _screenRedirect(const ChangePassScreen());
 
       case AppRoutes.chat:
-        args as ChatType;
+        if(args is String) return _screenRedirect(ChatScreen(type: ChatType.chat, sessionId: args));
         return _screenRedirect(ChatScreen(type: args));
+
+      case AppRoutes.history:
+        return _screenRedirect(const HistoryScreen());
 
       default:
         return _errorRoute();

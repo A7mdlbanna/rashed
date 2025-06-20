@@ -3,6 +3,7 @@ import 'package:rashed/core/utils/data/index.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
+import '../../../history/data/models/chat.dart';
 import '../models/message.dart';
 
 
@@ -33,10 +34,10 @@ class ChatRepository {
     return false;
   }
 
-  static Future<List<Message>> getMessages() async {
+  static Future<List<Message>> getMessages({String? session}) async {
     try {
-      if(sessionId == null) return [];
-      final Response<dynamic> response = await ApiService.getApi(ApiPaths.getMessages(sessionId!));
+      if((session ?? sessionId) == null) return [];
+      final Response<dynamic> response = await ApiService.getApi(ApiPaths.getMessages(session ?? sessionId!));
 
       debugPrint(response.data.toString());
 
@@ -63,5 +64,22 @@ class ChatRepository {
       debugPrint(e.toString());
     }
     return (false, null, null);
+  }
+
+
+  static Future<List<Chat>> getHistory() async {
+    try {
+      final Response<dynamic> response = await ApiService.getApi(ApiPaths.sessions);
+
+      debugPrint(response.statusCode.toString());
+      debugPrint(response.data.toString());
+
+      if(response.statusCode! < 300){
+        return (response.data['data'] as List?)?.map((e) => Chat.fromJson(e)).toList() ?? [];
+      }
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+    return [];
   }
 }

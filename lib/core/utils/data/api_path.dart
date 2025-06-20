@@ -12,4 +12,8 @@ class ApiPaths {
   static const String startSession = '$messages/session';
   static String getMessages(String id) => '$messages/get-message/$id';
   static String sendMessage(String id) => '$messages/send-message/$id';
+
+  static const String list = '/list';
+  static const String sessions = '/$list/chat-sessions';
+
 }

@@ -11,14 +11,15 @@ import '../cubit/chat_cubit.dart';
 import '../data/enum/chat_type.dart';
 
 class ChatScreen extends StatelessWidget {
-  const ChatScreen({super.key, required this.type});
+  const ChatScreen({super.key, required this.type, this.sessionId});
 
    final ChatType type;
+   final String? sessionId;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ChatCubit()..init(type),
+      create: (context) => ChatCubit()..init(type, sessionId: sessionId),
       child: Scaffold(
         appBar: const MyAppBar(title: 'AI Chat', actions: [Options()]),
         body: BlocBuilder<ChatCubit, ChatState>(

@@ -10,7 +10,7 @@ class ApiService {
   static const String urlencodedType = 'application/x-www-form-urlencoded';
   static const String jsonType = 'application/json';
   static const String multiPart = "multipart/form-data";
-  static const int unauthorizedCode = 401;
+  static const int unauthorizedCode = 403;
   static const int internalServerErrorCode = 500;
   static const String authorizationParameter = 'Authorization';
   static const String bearer = 'Bearer ';
