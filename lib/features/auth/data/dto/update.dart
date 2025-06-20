@@ -1,14 +1,17 @@
+import 'package:rashed/features/auth/data/repositories/user_repository.dart';
+
 class ChangePassDTO {
   ChangePassDTO({
-    this.token,
+    this.oldPassword,
     this.newPassword,
   });
 
-  final String? token;
+  final String? oldPassword;
   final String? newPassword;
 
   Map<String, dynamic> toJson() => {
-    if(token != null) 'token': token,
+    'email': UserRepository.user?.email,
+    if(oldPassword != null) 'oldPassword': oldPassword,
     if(newPassword != null) 'newPassword': newPassword,
   };
 }

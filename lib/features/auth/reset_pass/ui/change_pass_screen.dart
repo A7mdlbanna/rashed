@@ -27,11 +27,22 @@ class ChangePassScreen extends StatelessWidget {
                   children: [
                     160.heightBox,
                     CustomTextFormField(
+                      formKey: cubit.oldPasswordKey,
+                      controller: cubit.oldPasswordController,
+                      hintText: 'Old Password',
+                      prefix: AppImages.lock,
+                      textInputAction: TextInputAction.next,
+                      textInputType: TextInputType.visiblePassword,
+                      validator: validatePassword,
+                      obscureText: true,
+                    ),
+                    20.heightBox,
+                    CustomTextFormField(
                       formKey: cubit.passwordKey,
                       controller: cubit.passwordController,
                       hintText: 'Password',
                       prefix: AppImages.lock,
-                      textInputAction: TextInputAction.done,
+                      textInputAction: TextInputAction.next,
                       textInputType: TextInputType.visiblePassword,
                       validator: validatePassword,
                       obscureText: true,
