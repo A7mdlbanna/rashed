@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:rashed/core/utils/app_toast.dart';
+import 'package:rashed/core/utils/data/index.dart';
 import 'package:rashed/features/chat/data/repository/chat_repository.dart';
 import 'package:rashed/features/chat/services/attach_file.dart';
 import 'package:rashed/features/chat/services/export_file.dart';
@@ -20,7 +21,13 @@ class ChatCubit extends Cubit<ChatState> {
   ChatCubit() : super(ChatInitial());
 
   init(ChatType type, {String? sessionId}) async {
+    // start new session
     if(sessionId == null && ChatRepository.sessionId == null) await startSession();
+
+    // socket init & listen
+    // SocketService.emit('join', message: {'id': sessionId ?? ChatRepository.sessionId});
+    // messageSocket();
+
     if(type == ChatType.file) {
       () async {
         await attachPdf(this);
@@ -137,7 +144,15 @@ class ChatCubit extends Cubit<ChatState> {
 
     emit(StopListening());
   }
-  
+
+
+  void messageSocket(){
+    SocketService.listen('receive-ai-message', (data) {
+      debugPrint("Ai Message: $data");
+      messages.insert(0, Message.fromJson(data['message']));
+      emit(MessageCreated());
+    });
+  }
   
   @override
   Future<void> close() {

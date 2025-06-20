@@ -1,11 +1,12 @@
 import 'package:flutter/foundation.dart';
+import 'package:rashed/core/utils/data/api_path.dart';
 import 'package:socket_io_client/socket_io_client.dart';
 
 class SocketService {
   static late Socket socket;
 
   static init(){
-    socket = io('http://209.38.155.136:8002/', <String, dynamic>{'transports': ['websocket']});
+    socket = io('${ApiPaths.base}/chat', <String, dynamic>{'transports': ['websocket']});
     socket.onConnect((data) => debugPrint('-- connected -- $data'));
     socket.onConnectError((data) => debugPrint('-- connection error -- $data'));
     socket.onclose((data) => debugPrint('-- closed -- $data'));
