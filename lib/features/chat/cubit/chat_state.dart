@@ -20,3 +20,9 @@ final class ExportLoading extends ChatState {
   ExportLoading(this.id);
 }
 final class ExportDone extends ChatState {}
+
+final class SpeechState extends ChatState {}
+final class InitSpeech extends ChatState {}
+
+final class StartListening extends ChatState {}
+final class StopListening extends ChatState {}

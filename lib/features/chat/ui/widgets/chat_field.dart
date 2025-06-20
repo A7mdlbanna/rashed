@@ -40,8 +40,11 @@ class ChatField extends StatelessWidget {
             15.widthBox,
             GestureDetector(
               onTap: () {
-                if(cubit.chatController.text.isNotEmpty) cubit.sendMessage();
-                // TODO: record voice (stt)
+                if(cubit.chatController.text.isNotEmpty) {
+                  cubit.sendMessage();
+                } else {
+                  cubit.speechToText.isNotListening ? cubit.startListening() : cubit.stopListening();
+                }
               },
               child: Container(
                 width: 85.w, height: 75.h,
@@ -52,7 +55,7 @@ class ChatField extends StatelessWidget {
                 ),
                 padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
                 child: cubit.chatController.text.isEmpty
-                    ? CustomImageView(imagePath: AppImages.voice, width: 45.h, height: 40.h, color: AppColors.textLight)
+                    ? CustomImageView(imagePath: AppImages.voice, width: 45.h, height: 40.h, color: cubit.speechToText.isNotListening ? AppColors.textLight : AppColors.primary)
                     : CustomImageView(imagePath: AppImages.send, fit: BoxFit.scaleDown, color: AppColors.textLight),
               ),
             ),

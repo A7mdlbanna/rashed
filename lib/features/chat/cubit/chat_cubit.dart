@@ -3,9 +3,12 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:rashed/core/utils/app_toast.dart';
 import 'package:rashed/features/chat/data/repository/chat_repository.dart';
 import 'package:rashed/features/chat/services/attach_file.dart';
 import 'package:rashed/features/chat/services/export_file.dart';
+import 'package:speech_to_text/speech_recognition_result.dart';
+import 'package:speech_to_text/speech_to_text.dart';
 
 import '../../../core/utils/navigator.dart';
 import '../data/enum/chat_type.dart';
@@ -25,6 +28,12 @@ class ChatCubit extends Cubit<ChatState> {
       }();
     }
     await getMessages(sessionId: sessionId);
+    () async {
+      await initSpeech();
+      if(type == ChatType.voice) {
+        await startListening();
+      }
+    }();
   }
 
   startSession() async {
@@ -85,6 +94,48 @@ class ChatCubit extends Cubit<ChatState> {
       response: message.content ?? '',
     );
     emit(ExportDone());
+  }
+
+
+  SpeechToText speechToText = SpeechToText();
+  bool speechEnabled = false;
+
+  Future<void> initSpeech() async {
+    speechEnabled = await speechToText.initialize();
+    if(!speechEnabled) AppToast.toast(msg: 'Speech is not available');
+  }
+
+  Future<void> startListening() async {
+    await speechToText.listen(
+      onResult: onSpeechResult,
+      listenOptions: SpeechListenOptions(
+        partialResults: false,
+        listenMode: ListenMode.dictation,
+      ),
+    );
+    emit(StartListening());
+  }
+
+  void stopListening() async {
+    await speechToText.stop();
+    emit(StopListening());
+  }
+
+  void onSpeechResult(SpeechRecognitionResult result) {
+    debugPrint(result.toJson().toString());
+    if(!result.finalResult) return;
+    result.alternates.sort((a, b) => b.confidence.compareTo(a.confidence));
+
+    final message = Message(
+      id: '0000',
+      isFromBot: false,
+      type: 'TEXT',
+      content: result.alternates.first.recognizedWords,
+      createdAt: DateTime.now(),
+    );
+    sendMessage(customMessage: message);
+
+    emit(StopListening());
   }
   
   
