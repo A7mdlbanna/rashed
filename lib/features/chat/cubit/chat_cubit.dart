@@ -31,7 +31,7 @@ class ChatCubit extends Cubit<ChatState> {
     if(type == ChatType.file) {
       () async {
         await attachPdf(this);
-        emit(MessagesDone());
+        if(state is !MessagesLoading) emit(MessagesDone());
       }();
     }
     await getMessages(sessionId: sessionId);
@@ -108,11 +108,15 @@ class ChatCubit extends Cubit<ChatState> {
   bool speechEnabled = false;
 
   Future<void> initSpeech() async {
-    speechEnabled = await speechToText.initialize();
-    if(!speechEnabled) AppToast.toast(msg: 'Speech is not available');
+    speechEnabled = await speechToText.initialize(onStatus: (status) {
+      debugPrint(status);
+      emit(SpeechState());
+    });
+    if (!speechEnabled) AppToast.toast(msg: 'Speech is not available');
   }
 
   Future<void> startListening() async {
+    if(!speechEnabled) return;
     await speechToText.listen(
       onResult: onSpeechResult,
       listenOptions: SpeechListenOptions(
