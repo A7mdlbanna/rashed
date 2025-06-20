@@ -3,6 +3,7 @@ import 'package:rashed/core/utils/data/index.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:rashed/features/auth/data/dto/login.dart';
+import 'package:rashed/features/chat/data/repository/chat_repository.dart';
 
 import '../dto/register.dart';
 import '../dto/update.dart';
@@ -65,6 +66,7 @@ class UserRepository {
       if(response.statusCode! < 300){
         removeUser();
         AuthRepository.removeToken();
+        ChatRepository.deleteSessionId();
         return true;
       } else {
         AppToast.toast(msg: response.data['message'] ?? 'Cannot Logout');

@@ -14,6 +14,8 @@ class ChatRepository {
   static Future<void> saveSessionId(String sessionId) async {
     await AppLocalStorage.saveData(key: _sessionIdKey, value: sessionId);
   }
+  static Future<void> deleteSessionId() async => await AppLocalStorage.removeData(_sessionIdKey);
+
 
 
   static Future<bool> startSession() async {
