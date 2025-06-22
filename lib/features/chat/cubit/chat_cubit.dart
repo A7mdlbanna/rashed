@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:rashed/core/utils/app_toast.dart';
 import 'package:rashed/core/utils/data/index.dart';
 import 'package:rashed/features/chat/data/repository/chat_repository.dart';
@@ -116,6 +117,7 @@ class ChatCubit extends Cubit<ChatState> {
   }
 
   Future<void> startListening() async {
+    FlutterTts().stop();
     if(!speechEnabled) return;
     await speechToText.listen(
       onResult: onSpeechResult,
@@ -161,6 +163,7 @@ class ChatCubit extends Cubit<ChatState> {
   @override
   Future<void> close() {
     timer?.cancel();
+    FlutterTts().stop();
     return super.close();
   }
 
